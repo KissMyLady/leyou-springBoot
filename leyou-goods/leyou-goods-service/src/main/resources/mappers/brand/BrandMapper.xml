@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="top.mylady.service.mappers.brand.BrandMapper">
+    
+    <resultMap id="BaseResultMap" type="top.mylady.service.pojo.Brand">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="image" property="image"/>
+        <result column="letter" property="letter"/>
+    </resultMap>
+    
+    <!--查询品牌, 返回一个list-->
+    <select id="queryBrand" resultMap="BaseResultMap">
+        select * from tb_brand;
+    </select>
+    
+    <!--其他查询, 根据传入对象不同, 分别查询-->
+    
+    
+</mapper>
+
+<!--
+show create table tb_brand \G;
+
+ Table: tb_brand
+Create Table: CREATE TABLE `tb_brand` (
+      `id` bigint NOT NULL AUTO_INCREMENT COMMENT '品牌id',
+      `name` varchar(32) NOT NULL COMMENT '品牌名称',
+      `image` varchar(128) DEFAULT '' COMMENT '品牌图片地址',
+      `letter` char(1) DEFAULT '' COMMENT '品牌的首字母',
+      PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=325400 DEFAULT CHARSET=utf8 COMMENT='品牌表，一个品牌下有多个商品（spu），一对多关系'
+1 row in set (0.00 sec)
+
+-->

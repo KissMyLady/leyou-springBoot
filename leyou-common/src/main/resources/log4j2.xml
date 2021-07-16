@@ -7,7 +7,7 @@
         <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS}|%-5level| %logger{36} |%L row: %msg%n" />
         <property name="default" value="%d{DEFAULT}|%-4sn|%-5level|M: %M: %l|%L row: %msg%n"/>
         <!-- 定义日志存储的路径 -->
-        <property name="FILE_PATH" value="H:/myPprogramming/javaCode/leyou_springBoot/logs/goods" />
+        <property name="FILE_PATH" value="H:/myPprogramming/javaCode/leyou_springBoot/logs/common" />
         <!--
          格式化输出：%date表示日期, %thread表示线程名, %-5level：级别从左显示5个字符宽度 %msg：日志消息, %n是换行符
                 %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间
@@ -26,7 +26,7 @@
         -->
         <!--2021-07-11 01:47:47,342^|18^|INFO^|main^|org.apache.coyote.http11.Http11NioProtocol^|log^|Starting ProtocolHandler ["http-nio-8000"]-->
         <property name="CONSOLE_PATTERN">%d{DEFAULT}|%-4sn|%-5level|M: %M|%msg%n</property>
-        <property name="FILE_NAME">goods-service</property>
+        <property name="FILE_NAME">goods-common-utils</property>
     </properties>
     
     <!--先定义所有的appender-->
@@ -122,9 +122,9 @@
         <root level="debug">
             <appender-ref ref="Console"/>
             <appender-ref ref="Filelog"/>
-<!--            <appender-ref ref="RollingFileInfo"/>-->
-<!--            <appender-ref ref="RollingFileWarn"/>-->
-<!--            <appender-ref ref="RollingFileError"/>-->
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/>
         </root>
     
     </loggers>

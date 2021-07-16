@@ -18,6 +18,14 @@
             <artifactId>leyou-goods-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+    
+        <!-- 引入依赖模块 -->
+        <!--common-->
+        <dependency>
+            <groupId>top.mylady</groupId>
+            <artifactId>leyou-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         
         <!--SpringBoot Web-->
         <dependency>

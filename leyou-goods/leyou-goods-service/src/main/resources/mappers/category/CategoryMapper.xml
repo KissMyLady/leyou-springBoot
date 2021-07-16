@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="top.mylady.service.mappers.category.CategoryMapper">
+    
+    <resultMap id="BaseResultMap" type="top.mylady.service.pojo.Category">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="is_parent" property="isParent"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+    
+    <!--根据parentId查询子类目, 返回一个List列表-->
+    <select id="selectByParentId" resultMap="BaseResultMap">
+        select * from tb_category where parent_id=#{pid}
+    </select>
+</mapper>
+
+
+
+<!--
+show create table tb_category \G;
+
+Table: tb_category
+Create Table: CREATE TABLE `tb_category` (
+      `id` bigint NOT NULL AUTO_INCREMENT COMMENT '类目id',
+      `name` varchar(32) NOT NULL COMMENT '类目名称',
+      `parent_id` bigint NOT NULL COMMENT '父类目id,顶级类目填0',
+      `is_parent` tinyint(1) NOT NULL COMMENT '是否为父节点，0为否，1为是',
+      `sort` int NOT NULL COMMENT '排序指数，越小越靠前',
+  PRIMARY KEY (`id`),
+  KEY `key_parent_id` (`parent_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1424 DEFAULT CHARSET=utf8 COMMENT='商品类目表，类目和商品(spu)是一对多关系，类目与品牌是多对多关系'
+1 row in set (0.00 sec)
+
+-->
