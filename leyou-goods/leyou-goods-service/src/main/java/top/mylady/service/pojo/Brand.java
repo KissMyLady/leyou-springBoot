@@ -3,7 +3,7 @@ import lombok.Data;
 
 
 /**
- * 品牌分类
+ * 品牌分类, 实体类
  */
 @Data
 public class Brand {

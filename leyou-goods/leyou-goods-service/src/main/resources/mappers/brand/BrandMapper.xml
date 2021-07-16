@@ -17,22 +17,31 @@
         select * from tb_brand;
     </select>
     
-    <!--其他查询, 根据传入对象不同, 分别查询-->
+    <select id="queryBrandCount" resultType="java.lang.Integer">
+        select count(*) from tb_brand;
+    </select>
     
+    <!--
+    其他查询, 根据传入对象不同, 分别查询
+        select * from students where gender=1 and is_delete=0 order by id desc;
+    分页查询:
+        select * from students where is_delete=0 limit (n-1)*m,m
+        
+    where 元素知道只有在一个以上的if条件有值的情况下才去插入“WHERE”子句而且,
+    若最后的内容是“AND”或“OR”开头的, where 元素也知道如何将他们去除
+    -->
+    <select id="queryBrandByPage" resultMap="BaseResultMap">
+        select * from tb_brand
+        
+        <if test="sortBy != null and sortBy != '' ">
+            order by ${sortBy}
+        </if>
+        
+        <if test="desc == true">
+            desc
+        </if>
+        
+         limit ${page}, ${rows}
+    </select>
     
 </mapper>
-
-<!--
-show create table tb_brand \G;
-
- Table: tb_brand
-Create Table: CREATE TABLE `tb_brand` (
-      `id` bigint NOT NULL AUTO_INCREMENT COMMENT '品牌id',
-      `name` varchar(32) NOT NULL COMMENT '品牌名称',
-      `image` varchar(128) DEFAULT '' COMMENT '品牌图片地址',
-      `letter` char(1) DEFAULT '' COMMENT '品牌的首字母',
-      PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=325400 DEFAULT CHARSET=utf8 COMMENT='品牌表，一个品牌下有多个商品（spu），一对多关系'
-1 row in set (0.00 sec)
-
--->
