@@ -1,10 +1,15 @@
 package top.mylady.service.ctrl;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.mylady.service.pojo.Brand;
 import top.mylady.service.server.BrandService;
+import top.mylady.service.server.CategoryService;
 import top.mylady.utils.dtos.PageResponseResult;
+import top.mylady.utils.dtos.ResponseResult;
+import java.util.List;
 
 
 /**
@@ -28,6 +33,27 @@ public class BrandCtrl {
     ){
         PageResponseResult pageResponseResult = brandService.queryBrandByPage(key, page, rows, sortBy, desc);
         return pageResponseResult;
+    }
+
+    /**
+     * 新增品牌
+     */
+    @PostMapping("/addBrand")
+    public ResponseResult addBrandAndCategory(
+            @RequestBody Brand brand,
+            @Param("cids")List<Long> cids){
+        return  brandService.addBrand(brand, cids);
+    }
+
+    @Autowired
+    private CategoryService categoryService;
+
+    /**
+     * 通过品牌id查询商品分类
+     */
+    @GetMapping("/bid/{bid}")
+    public ResponseResult queryByBrandId(@PathVariable("bid") Long bid){
+        return categoryService.queryByBrandId(bid);
     }
 
 

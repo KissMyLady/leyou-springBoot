@@ -60,7 +60,7 @@ public class UploadService {
             System.out.println("打印略缩图路径: "+ path);
 
             //生成url地址
-            return "http://139.192.178.12:8888/"+ storePath.getFullPath();
+            return "http://139.198.178.12:8888/"+ storePath.getFullPath();
 
         }
         catch (Exception e){

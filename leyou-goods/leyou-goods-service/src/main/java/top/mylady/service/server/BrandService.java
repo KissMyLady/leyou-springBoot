@@ -24,6 +24,24 @@ public class BrandService {
     @Autowired
     private BrandMapper brandMapper;
 
+    /**
+     * 新增品牌
+     */
+    public ResponseResult addBrand(Brand brand, List<Long> cids){
+
+        try {
+            cids.forEach(cid -> {
+                brandMapper.insertBrandAndCategory(brand.getId(), cid);
+            });
+            return ResponseResult.okResult("ok");
+        }
+        catch (Exception e){
+            System.out.println("程序错误, 原因e: "+ e);
+            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+        }
+
+    }
+
 
     /**
      * key:    搜索关键词

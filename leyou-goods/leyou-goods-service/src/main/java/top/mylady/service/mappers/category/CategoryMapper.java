@@ -10,4 +10,6 @@ public interface CategoryMapper {
 
     List<Category> selectByParentId(Integer pid);
 
+    List<Category> queryByBrandId(Long pid);
+
 }

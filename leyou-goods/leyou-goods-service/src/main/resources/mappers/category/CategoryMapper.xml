@@ -17,6 +17,12 @@
     <select id="selectByParentId" resultMap="BaseResultMap">
         select * from tb_category where parent_id=#{pid}
     </select>
+    
+    <!--通过品牌id查询商品分类id, 返回一个list列表-->
+    <select id="queryByBrandId" resultMap="BaseResultMap">
+        select * from tb_category_brand where brand_id=#{bid}
+    </select>
+    
 </mapper>
 
 

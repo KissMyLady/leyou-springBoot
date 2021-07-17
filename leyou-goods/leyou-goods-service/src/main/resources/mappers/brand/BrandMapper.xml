@@ -12,6 +12,12 @@
         <result column="letter" property="letter"/>
     </resultMap>
     
+    <!--插入品牌与分类之间的关系-->
+    <insert id="insertBrandAndCategory">
+        insert into tb_category_brand (category_id, brand_id)
+        values (#{cid}, ${bid})
+    </insert>
+    
     <!--查询品牌, 返回一个list-->
     <select id="queryBrand" resultMap="BaseResultMap">
         select * from tb_brand;

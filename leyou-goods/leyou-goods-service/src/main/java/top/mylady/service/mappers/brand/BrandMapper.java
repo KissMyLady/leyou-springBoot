@@ -20,4 +20,12 @@ public interface BrandMapper {
      * 查询总条数
      */
     Integer queryBrandCount();
+
+    /**
+     * 新增品牌, 插入品牌与分类的关系
+     */
+    void insertBrandAndCategory(
+            @Param("cid") Long cid,
+            @Param("bid") Long bid
+    );
 }
