@@ -5,6 +5,10 @@
 一级域名: www.leyou.com,    leyou.com, leyou.cn    
 二级域名: manage.leyou.com, api.leyou.com    
 
+## 服务Api
+1, 商品分类: http://127.0.0.1:8081/goods/category/list?pid=2    
+2, 品牌分类: http://127.0.0.1:8081/goods/brand/page?page=2&rows=5    
+
 ##  技术选型    
 前 端:     
 - 基础ES6标准     

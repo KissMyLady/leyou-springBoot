@@ -7,26 +7,9 @@
         <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS}|%-5level| %logger{36} |%L row: %msg%n" />
         <property name="default" value="%d{DEFAULT}|%-4sn|%-5level|M: %M: %l|%L row: %msg%n"/>
         <!-- 定义日志存储的路径 -->
-        <property name="FILE_PATH" value="H:/myPprogramming/javaCode/leyou_springBoot/logs/common" />
-        <!--
-         格式化输出：%date表示日期, %thread表示线程名, %-5level：级别从左显示5个字符宽度 %msg：日志消息, %n是换行符
-                %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间
-                %-5level : 输出日志级别, -5表示左对齐并且固定输出5个字符, 如果不足在右边补0
-                %c : logger的名称(%logger)
-                %t : 输出当前线程名称
-                %p : 日志输出格式
-                %m : 日志内容, 即 logger.info("message")
-                %n : 换行符
-                %C : Java类名(%F)
-                %L : 行号
-                %M : 方法名
-                %l : 输出语句所在的行数, 包括类名、方法名、文件名、行数
-                hostName : 本地机器名
-                hostAddress : 本地ip地址
-        -->
-        <!--2021-07-11 01:47:47,342^|18^|INFO^|main^|org.apache.coyote.http11.Http11NioProtocol^|log^|Starting ProtocolHandler ["http-nio-8000"]-->
+        <property name="FILE_PATH" value="H:/myPprogramming/javaCode/leyou_springBoot/logs/upload" />
         <property name="CONSOLE_PATTERN">%d{DEFAULT}|%-4sn|%-5level|M: %M|%msg%n</property>
-        <property name="FILE_NAME">goods-common-utils</property>
+        <property name="FILE_NAME">upload-service</property>
     </properties>
     
     <!--先定义所有的appender-->
@@ -83,9 +66,7 @@
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
-    
     </appenders>
-    
     
     <!--Logger节点用来单独指定日志的形式, 比如要为指定包下的class指定不同的日志级别等。-->
     <!--然后定义loggers, 只有定义了logger并引入的appender, appender才会生效-->
@@ -94,22 +75,23 @@
         <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
         <!--监控系统信息-->
         <!--若是additivity设为false, 则子Logger 只会在自己的appender里输出, 而不会在 父Logger 的appender里输出。-->
+        <logger name="org.apache" level="warn" />
+        
+        <logger name="com.sun.jersey" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
         
         <logger name="org.springframework" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
         </logger>
         
-        <logger name="org.mybatis" level="warn" additivity="false">
+        <Logger name="org.mybatis" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
-        </logger>
+        </Logger>
         
         <logger name="com.zaxxer" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </logger>
-        
-        <Logger name="org.apache" level="off" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
         
         <Logger name="com.netflix" level="off" additivity="false">
             <AppenderRef ref="Console"/>
@@ -118,6 +100,10 @@
         <Logger name="org.hibernate" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
+        
+        <logger name="com.sun.jersey" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
         
         <root level="debug">
             <appender-ref ref="Console"/>
