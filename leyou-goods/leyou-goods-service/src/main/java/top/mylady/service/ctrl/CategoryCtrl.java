@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController  //@RestController注解相当于@ResponseBody+ @Controller合在一起
-@RequestMapping("/category")
+@RequestMapping("/goods/category")
 public class CategoryCtrl {
 
     private static final Logger logger = LoggerFactory.getLogger(CategoryCtrl.class);

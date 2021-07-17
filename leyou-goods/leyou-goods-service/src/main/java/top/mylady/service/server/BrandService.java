@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.mylady.service.mappers.brand.BrandMapper;
 import top.mylady.service.pojo.Brand;
+import top.mylady.utils.dtos.AppHttpCodeEnum;
+import top.mylady.utils.dtos.PageResponseResult;
+import top.mylady.utils.dtos.ResponseResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +33,7 @@ public class BrandService {
      * desc:   是否降序
      * 传递值如下: key=, page=1, rows=5, sortBy=id, desc=false
      */
-    public List<Brand> queryBrandByPage(String key,
+    public PageResponseResult queryBrandByPage(String key,
                                         Integer page,
                                         Integer rows,
                                         String sortBy,
@@ -62,20 +66,25 @@ public class BrandService {
 
         //分页起始数据计算, 默认从第一页开始
         int startNum = 0;
+
         if (page > 1){
             //起始数据 = 分页 * 分页数
-            startNum = page * rows;
+            startNum = (page- 1)* rows;
         }
 
+        PageResponseResult pageResponseResult;
         List<Brand> brandList;
         try {
             brandList = brandMapper.queryBrandByPage(key, startNum, rows, sortBy, desc);
+            pageResponseResult = new PageResponseResult(page, pages, countNums);
+            pageResponseResult.ok(brandList);
         }
         catch (Exception e){
-            brandList = new ArrayList<>();
+            pageResponseResult = new PageResponseResult(page, pages, countNums);
+            pageResponseResult.error(505, "AppHttpCodeEnum.DATA_NOT_EXIST");
         }
 
-        return brandList;
+        return pageResponseResult;
     }
 
 }

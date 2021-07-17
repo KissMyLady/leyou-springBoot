@@ -76,6 +76,10 @@ public class ResponseResult<T> implements Serializable {
         return okResult(enums.getCode(),errorMessage);
     }
 
+
+    /*
+    * 以下是别的类继承使用的实例化方法
+    * */
     public ResponseResult<?> error(Integer code, String msg) {
         this.code = code;
         this.errorMessage = msg;

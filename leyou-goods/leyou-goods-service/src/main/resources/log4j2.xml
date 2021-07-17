@@ -83,9 +83,7 @@
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
-    
     </appenders>
-    
     
     <!--Logger节点用来单独指定日志的形式, 比如要为指定包下的class指定不同的日志级别等。-->
     <!--然后定义loggers, 只有定义了logger并引入的appender, appender才会生效-->
@@ -94,30 +92,28 @@
         <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
         <!--监控系统信息-->
         <!--若是additivity设为false, 则子Logger 只会在自己的appender里输出, 而不会在 父Logger 的appender里输出。-->
+        <logger name="org.apache" level="warn" />
         
         <logger name="org.springframework" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
         </logger>
         
-<!--        <logger name="org.mybatis" level="warn" additivity="false">-->
-<!--            <AppenderRef ref="Console"/>-->
-<!--        </logger>-->
+        <Logger name="org.mybatis" level="warn" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
         
-        <logger name="com.zaxxer" level="warn" additivity="false">
+        <logger name="com.zaxxer" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </logger>
         
-        <Logger name="org.apache" level="warn" additivity="false">
+        <Logger name="com.netflix" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
         
-        <Logger name="com.netflix" level="error" additivity="false">
+        <Logger name="org.hibernate" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
         
-        <Logger name="org.hibernate" level="error" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
         
         <root level="debug">
             <appender-ref ref="Console"/>

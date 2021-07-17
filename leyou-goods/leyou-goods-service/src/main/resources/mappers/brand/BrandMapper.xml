@@ -33,6 +33,12 @@
     <select id="queryBrandByPage" resultMap="BaseResultMap">
         select * from tb_brand
         
+        <where>
+            <if test="key != null and key != '' ">
+                letter like #{key}
+            </if>
+        </where>
+        
         <if test="sortBy != null and sortBy != '' ">
             order by ${sortBy}
         </if>

@@ -16,6 +16,10 @@ public class PageResponseResult extends ResponseResult{
         this.total = total;
     }
 
+    private ResponseResult setAppHttpCodeEnum(AppHttpCodeEnum enums, String errorMessage){
+        return okResult(enums.getCode(),errorMessage);
+    }
+
     public Integer getCurrentPage() {
         return currentPage;
     }
