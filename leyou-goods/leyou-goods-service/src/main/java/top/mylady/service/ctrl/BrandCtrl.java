@@ -12,9 +12,7 @@ import top.mylady.utils.dtos.ResponseResult;
 import java.util.List;
 
 
-/**
- * 品牌
- */
+//品牌
 @RestController
 @RequestMapping("/goods/brand")
 public class BrandCtrl {
@@ -38,10 +36,11 @@ public class BrandCtrl {
     /**
      * 新增品牌
      */
-    @PostMapping("/addBrand")
+    @RequestMapping("/addBrand")
     public ResponseResult addBrandAndCategory(
             @RequestBody Brand brand,
-            @Param("cids")List<Long> cids){
+            @Param("cids") List<Long> cids){
+        logger.info("打印前端传递过来的参数brand: "+ brand +" cids: "+ cids);
         return  brandService.addBrand(brand, cids);
     }
 
@@ -53,6 +52,7 @@ public class BrandCtrl {
      */
     @GetMapping("/bid/{bid}")
     public ResponseResult queryByBrandId(@PathVariable("bid") Long bid){
+        logger.debug("打印传递过来的bid: "+ bid);
         return categoryService.queryByBrandId(bid);
     }
 

@@ -12,6 +12,7 @@ import top.mylady.utils.dtos.ResponseResult;
 import java.util.List;
 
 
+//商品分类
 @RestController  //@RestController注解相当于@ResponseBody+ @Controller合在一起
 @RequestMapping("/goods/category")
 public class CategoryCtrl {
@@ -30,7 +31,7 @@ public class CategoryCtrl {
 
         List<Category> categoryList = categoryService.queryCategoryById(pid);
 
-        if (categoryList.isEmpty()){
+        if (categoryList == null || categoryList.isEmpty()){
             return ResponseResult.errorResult(AppHttpCodeEnum.DATA_NOT_EXIST);
         }
 

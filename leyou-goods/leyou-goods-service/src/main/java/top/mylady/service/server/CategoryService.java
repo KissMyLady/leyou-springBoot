@@ -1,19 +1,20 @@
 package top.mylady.service.server;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.mylady.service.mappers.category.CategoryMapper;
+import top.mylady.service.pojo.BrandCategory;
 import top.mylady.service.pojo.Category;
 import top.mylady.utils.dtos.AppHttpCodeEnum;
 import top.mylady.utils.dtos.ResponseResult;
-
 import java.util.List;
 
 
-/**
- * 省略了接口编写, 直接写了实现类
- */
 @Service
 public class CategoryService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CategoryService.class);
 
     @Autowired
     private CategoryMapper categoryMapper;
@@ -34,9 +35,14 @@ public class CategoryService {
             categoryList = this.categoryMapper.queryByBrandId(bid);
         }
         catch (Exception e){
-            System.out.println("程序错误, 原因e: "+ e);
+            logger.error("品牌id查询 -> 分类Id查询错误, 原因e: \r\n"+ e);
             return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
         }
+
+        if (categoryList == null || categoryList.isEmpty()){
+            return ResponseResult.errorResult(AppHttpCodeEnum.DATA_NOT_EXIST);
+        }
+
         return ResponseResult.okResult(categoryList);
     }
 }

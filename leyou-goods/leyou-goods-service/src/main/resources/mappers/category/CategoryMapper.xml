@@ -13,14 +13,25 @@
         <result column="sort" property="sort"/>
     </resultMap>
     
+    <resultMap id="Tb_brand_category" type="top.mylady.service.pojo.BrandCategory">
+        <id column="id" property="id"/>
+        <result column="brand_id" property="brand_id"/>
+        <result column="category_id" property="category_id"/>
+    </resultMap>
+    
     <!--根据parentId查询子类目, 返回一个List列表-->
     <select id="selectByParentId" resultMap="BaseResultMap">
         select * from tb_category where parent_id=#{pid}
     </select>
     
-    <!--通过品牌id查询商品分类id, 返回一个list列表-->
+    <!--通过品牌id查询商品分类, 返回一个list列表-->
     <select id="queryByBrandId" resultMap="BaseResultMap">
-        select * from tb_category_brand where brand_id=#{bid}
+#         select * from tb_category_brand where brand_id=${bid}
+
+        select * from tb_category where id in (
+            select category_id from tb_category_brand where brand_id = ${bid}
+            )
+
     </select>
     
 </mapper>

@@ -1,4 +1,6 @@
 package top.mylady.service.mappers.category;
+import org.apache.ibatis.annotations.Param;
+import top.mylady.service.pojo.BrandCategory;
 import top.mylady.service.pojo.Category;
 import java.util.List;
 
@@ -10,6 +12,6 @@ public interface CategoryMapper {
 
     List<Category> selectByParentId(Integer pid);
 
-    List<Category> queryByBrandId(Long pid);
+    List<Category> queryByBrandId(@Param("bid") Long bid);
 
 }
