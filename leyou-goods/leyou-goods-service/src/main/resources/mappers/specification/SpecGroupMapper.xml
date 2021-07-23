@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="top.mylady.service.mappers.specification.SpecGroupMapper">
+    
+    
+    <resultMap id="BaseResultMap" type="top.mylady.service.pojo.Sku_SpecGroup">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="cid" property="cid"/>
+        <result column="name" property="name"/>
+        <!--    <result column="params" property="params"/>-->
+        <collection property="params" ofType="top.mylady.service.pojo.Sku_SpecParam">
+            <id column="id" property="id"/>
+            <result column="id" property="id"/>
+            <result column="cid" property="cid"/>
+            <result column="groupId" property="groupId"/>
+            <result column="name" property="name"/>
+            <result column="numeric" property="numeric"/>
+            <result column="unit" property="unit"/>
+            <result column="generic" property="generic"/>
+            <result column="searching" property="searching"/>
+            <result column="segments" property="segments"/>
+        </collection>
+    </resultMap>
+    
+    <resultMap id="tb_group" type="top.mylady.service.pojo.Sku_SpecParam">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="cid" property="cid"/>
+        <result column="groupId" property="groupId"/>
+        <result column="name" property="name"/>
+        <result column="numeric" property="numeric"/>
+        <result column="unit" property="unit"/>
+        <result column="generic" property="generic"/>
+        <result column="searching" property="searching"/>
+        <result column="segments" property="segments"/>
+    </resultMap>
+
+    <select id="queryGroupsByCid" resultMap="BaseResultMap">
+        select * from tb_spec_group where cid = ${cid}
+    </select>
+    
+    <select id="queryByGid" resultMap="tb_group">
+        select * from tb_spec_param where cid = ${gid}
+    </select>
+
+</mapper>
