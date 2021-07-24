@@ -2,6 +2,7 @@ package top.mylady.service.ctrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,14 @@ public class CategoryCtrl {
 
         logger.debug("CategoryCtrl: 成功查询到分类数据, 返回结果");
         return ResponseResult.okResult(categoryList);
+    }
+
+    /**
+     * 商品分类查询
+     */
+    @GetMapping("/names")
+    public ResponseResult<List<String>> queryNameById(@RequestParam("ids") List<Long> ids){
+        return this.categoryService.queryNamesByIds(ids);
     }
 
 }

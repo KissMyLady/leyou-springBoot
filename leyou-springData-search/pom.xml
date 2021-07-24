@@ -5,6 +5,7 @@
     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>leyou-springData-search</artifactId>
+    <packaging>jar</packaging>
     
     <properties>
         <java.version>11</java.version>
@@ -13,14 +14,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     
-        <spring-elasticsearch.version>4.2.3</spring-elasticsearch.version>
-        <elasticsearch.version>7.13.2</elasticsearch.version>
-        <log4j>2.14.1</log4j>
-        <netty>4.1.65.Final</netty>
-        <springdata.commons>2.6.0-SNAPSHOT</springdata.commons>
-        <testcontainers>1.15.3</testcontainers>
-        <blockhound-junit>1.0.6.RELEASE</blockhound-junit>
-        <java-module-name>spring.data.elasticsearch</java-module-name>
+<!--        <spring-elasticsearch.version>4.2.3</spring-elasticsearch.version>-->
+<!--        <elasticsearch.version>7.13.2</elasticsearch.version>-->
+<!--        <log4j>2.14.1</log4j>-->
+<!--        <netty>4.1.65.Final</netty>-->
+<!--        <springdata.commons>2.6.0-SNAPSHOT</springdata.commons>-->
+<!--        <testcontainers>1.15.3</testcontainers>-->
+<!--        <blockhound-junit>1.0.6.RELEASE</blockhound-junit>-->
+<!--        <java-module-name>spring.data.elasticsearch</java-module-name>-->
     </properties>
     
     <parent>
@@ -56,8 +57,19 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
-        
+    
+        <!-- 引入依赖模块 -->
+        <!--common-->
+        <dependency>
+            <groupId>top.mylady</groupId>
+            <artifactId>leyou-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+   
     </dependencies>
+    
+    
+    
     
     <build>
         <plugins>
@@ -66,6 +78,24 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+    
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        
     </build>
     
    

@@ -27,11 +27,19 @@
     <!--通过品牌id查询商品分类, 返回一个list列表-->
     <select id="queryByBrandId" resultMap="BaseResultMap">
 #         select * from tb_category_brand where brand_id=${bid}
-
         select * from tb_category where id in (
             select category_id from tb_category_brand where brand_id = ${bid}
             )
-
+    </select>
+    
+    <select id="queryNamesByIds" resultMap="BaseResultMap">
+        select * from tb_category
+        <where>
+             id in
+            <foreach item="id" collection="ids" separator="," open="(" close=")">
+                ${id}
+            </foreach>
+        </where>
     </select>
     
 </mapper>

@@ -16,7 +16,8 @@
         <module>leyou-goods</module>
         <module>leyou-common</module>
         <module>leyou-upload</module>
-<!--        <module>leyou-springData-search</module>-->
+        <module>leyou-search</module>
+        <!--        <module>leyou-springData-search</module>-->
     </modules>
     
     <!-- 继承Spring boot工程 -->

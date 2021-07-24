@@ -8,6 +8,8 @@ import top.mylady.service.pojo.BrandCategory;
 import top.mylady.service.pojo.Category;
 import top.mylady.utils.dtos.AppHttpCodeEnum;
 import top.mylady.utils.dtos.ResponseResult;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,4 +47,33 @@ public class CategoryService {
 
         return ResponseResult.okResult(categoryList);
     }
+
+    /**
+     * 商品分类名称查询, es
+     */
+    public ResponseResult queryNamesByIds(List<Long> ids){
+        logger.info("商品分类查询");
+        List<Category> categoryList;
+        try {
+            categoryList = this.categoryMapper.queryNamesByIds(ids);
+        }
+        catch (Exception e){
+            logger.error("品牌id查询 -> 分类Id查询错误, 原因e: \r\n"+ e);
+            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+        }
+
+        if (categoryList == null || categoryList.isEmpty()){
+            return ResponseResult.errorResult(AppHttpCodeEnum.DATA_NOT_EXIST);
+        }
+
+        //提取Category中的name
+        List<String> names = new ArrayList<>();
+        categoryList.forEach((item)->{
+            names.add(item.getName());
+        });
+
+        return ResponseResult.okResult(names);
+
+    }
+
 }

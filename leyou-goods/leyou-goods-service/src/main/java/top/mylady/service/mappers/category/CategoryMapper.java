@@ -14,4 +14,5 @@ public interface CategoryMapper {
 
     List<Category> queryByBrandId(@Param("bid") Long bid);
 
+    List<Category> queryNamesByIds(@Param("ids") List<Long> ids);
 }
