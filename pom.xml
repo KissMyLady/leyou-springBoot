@@ -16,6 +16,7 @@
         <module>leyou-goods</module>
         <module>leyou-common</module>
         <module>leyou-upload</module>
+        <module>leyou-user</module>
     </modules>
     
     <!-- 继承Spring boot工程 -->

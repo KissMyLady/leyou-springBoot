@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="top.mylady.user.mappers.user.IUser">
+    
+    <resultMap id="BaseResultMap" type="top.mylady.user.pojos.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="salt" property="salt"/>
+    </resultMap>
+    
+    <!--插入品牌与分类之间的关系-->
+    <insert id="test">
+        insert into tb_category_brand (category_id, brand_id)
+        values (#{cid}, ${bid})
+    </insert>
+    
+    <!-- where username = #{user.username}-->
+    <select id="checkUser" resultMap="BaseResultMap">
+        select * from tb_user
+        <where>
+            <if test="user.username != null and user.phone ==null ">
+                 username = #{user.username}
+            </if>
+            
+            <if test="user.phone != null and user.username==null ">
+                 phone = #{user.phone}
+            </if>
+
+        </where>
+    </select>
+
+
+</mapper>
