@@ -6,25 +6,7 @@
         <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
         <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS}|%-5level| %logger{36} |%L row: %msg%n" />
         <property name="default" value="%d{DEFAULT}|%-4sn|%-5level|M: %M: %l|%L row: %msg%n"/>
-        <!-- 定义日志存储的路径 -->
         <property name="FILE_PATH" value="H:/myPprogramming/javaCode/leyou_springBoot/logs/goods" />
-        <!--
-         格式化输出：%date表示日期, %thread表示线程名, %-5level：级别从左显示5个字符宽度 %msg：日志消息, %n是换行符
-                %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间
-                %-5level : 输出日志级别, -5表示左对齐并且固定输出5个字符, 如果不足在右边补0
-                %c : logger的名称(%logger)
-                %t : 输出当前线程名称
-                %p : 日志输出格式
-                %m : 日志内容, 即 logger.info("message")
-                %n : 换行符
-                %C : Java类名(%F)
-                %L : 行号
-                %M : 方法名
-                %l : 输出语句所在的行数, 包括类名、方法名、文件名、行数
-                hostName : 本地机器名
-                hostAddress : 本地ip地址
-        -->
-        <!--2021-07-11 01:47:47,342^|18^|INFO^|main^|org.apache.coyote.http11.Http11NioProtocol^|log^|Starting ProtocolHandler ["http-nio-8000"]-->
         <property name="CONSOLE_PATTERN">%d{DEFAULT}|%-4sn|%-5level|M: %M|%msg%n</property>
         <property name="FILE_NAME">goods-service</property>
     </properties>
@@ -42,7 +24,7 @@
         <console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="${default}"/> <!--输出日志的格式 -->
             <!--控制台只输出level及其以上级别的信息（onMatch）, 其他的直接拒绝（onMismatch）-->
-            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
         </console>
         
         <!-- 这个会打印出所有的info及以下级别的信息, 每次大小超过size, 则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩, 作为存档-->
@@ -114,10 +96,13 @@
             <AppenderRef ref="Console"/>
         </Logger>
         
+        <Logger name="org.elasticsearch" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
         
         <root level="debug">
             <appender-ref ref="Console"/>
-            <appender-ref ref="Filelog"/>
+<!--            <appender-ref ref="Filelog"/>-->
 <!--            <appender-ref ref="RollingFileInfo"/>-->
 <!--            <appender-ref ref="RollingFileWarn"/>-->
 <!--            <appender-ref ref="RollingFileError"/>-->
