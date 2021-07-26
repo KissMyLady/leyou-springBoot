@@ -53,4 +53,12 @@
                            salt= #{user.salt}
     </update>
 
+    <select id="selectByUserName" resultMap="BaseResultMap">
+        select * from tb_user
+        <where>
+            username = #{username}
+        </where>
+    </select>
+    
+    
 </mapper>

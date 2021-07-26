@@ -1,5 +1,4 @@
 package top.mylady.user.config;
-
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.Data;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-
 import javax.sql.DataSource;
 
 

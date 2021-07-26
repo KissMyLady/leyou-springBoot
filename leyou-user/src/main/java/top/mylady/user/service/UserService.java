@@ -58,7 +58,9 @@ public class UserService {
         //参考博客: https://blog.csdn.net/qq_40794266/article/details/88655352
         //PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        user.setPassword(CodecUtils.passwordBcryptEncode(user.getUsername(), salt));
+        user.setPassword(CodecUtils.passwordBcryptEncode(user.getPassword(), salt));
+        //校验密码调用相反的解密即可
+
         //强制设置不能指定的参数为null
         user.setId(null);
         user.setCreated(new Date());
@@ -121,4 +123,33 @@ public class UserService {
 
     }
 
+    /**
+     * 用户登录
+     */
+    public ResponseResult userLogin(String username, String pwd){
+        //查询用户是否存在
+        User findUser = null;
+        try {
+            findUser = iUser.selectByUserName(username);
+            logger.info("根据username查询用户是否存在, 打印findUser: "+ findUser);
+        }
+        catch (Exception e){
+            System.out.println("错误, 原因e: "+ e);
+        }
+
+        if (findUser == null){
+            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+        }
+
+        //校验, 数据的密码和传入的密码是否一致
+        Boolean isUser = CodecUtils.passwordConfirm(pwd+ findUser.getSalt(), findUser.getPassword());
+
+        if ( isUser == false ){
+            logger.warn("警告, 密码核对失败, 返回错误信息");
+            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+        }
+
+        logger.info("密码校验成功了");
+        return ResponseResult.okResult("用户登录成功");
+    }
 }

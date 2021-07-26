@@ -32,4 +32,13 @@ public class UserCtrl {
         return userService.registerService(user, code);
     }
 
+    /**
+     * 用户登录
+     */
+    @PostMapping("/login")
+    public ResponseResult login(@RequestParam("username") String username,
+                                @RequestParam("pwd") String pwd ){
+        return userService.userLogin(username, pwd);
+    }
+
 }
