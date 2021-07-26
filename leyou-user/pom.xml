@@ -145,6 +145,13 @@
             <artifactId>jedis</artifactId>
         </dependency>
         
+        <!--数据校验包-->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+<!--            <version>7.0.1.Final</version>-->
+        </dependency>
+
     </dependencies>
 
 

@@ -9,4 +9,10 @@ public interface IUser {
 
     User checkUser(@Param("user") User user);
 
+    /**
+     * 注册, 插入数据
+     */
+    int register(@Param("user") User user);
+
+    int insertSelective(@Param("user") User user);
 }
