@@ -1,4 +1,4 @@
-package top.mylady.auth.entity;
+package top.mylady.utils.pojos.auth;
 import lombok.Data;
 
 

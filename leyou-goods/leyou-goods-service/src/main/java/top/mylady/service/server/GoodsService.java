@@ -2,8 +2,7 @@ package top.mylady.service.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import top.mylady.service.pojo.Sku;
-import top.mylady.utils.dtos.ResponseResult;
+import top.mylady.utils.pojos.goods.Sku;
 import org.springframework.http.ResponseEntity;
 
 
@@ -19,11 +18,14 @@ public class GoodsService {
     public ResponseEntity querySkuById(long id){
         logger.info("goods模块, 服务器层, 根据sku查询商品, 打印传递过来的id值: "+ id);
         Sku sku = new Sku();
+        sku.setId(111L);
+        sku.setTitle("好吃的糖, 莫言说那个时候糖与现在和心爱的女人做爱一样快乐");
+        sku.setPrice(111L);
 
         if (sku != null){
             return ResponseEntity.ok(sku);
         }else{
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(new Sku());
         }
 
     }

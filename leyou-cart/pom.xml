@@ -19,6 +19,7 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         
+        <!--不能导入这个模块, 否则启动后无法进行web转发-->
 <!--        <dependency>-->
 <!--            <groupId>top.mylady</groupId>-->
 <!--            <artifactId>leyou-auth</artifactId>-->
@@ -91,14 +92,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
-<!--            <version>2.1.5.RELEASE</version>-->
         </dependency>
         
         <!--配置管理依赖-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
+<!--        </dependency>-->
     
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->

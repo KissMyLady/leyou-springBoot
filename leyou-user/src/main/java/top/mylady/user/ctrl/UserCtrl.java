@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.mylady.user.pojos.User;
 import top.mylady.user.service.UserService;
-import top.mylady.utils.dtos.ResponseResult;
+import top.mylady.user.utils.ResponseResult;
 import org.springframework.http.ResponseEntity;
 import javax.validation.Valid;
 

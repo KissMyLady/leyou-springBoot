@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.mylady.auth.client.UserClient;
 import top.mylady.auth.config.JwtProperties;
-import top.mylady.auth.entity.UserInfo;
+import top.mylady.utils.pojos.auth.UserInfo;
 import top.mylady.auth.utils.CookieUtils;
 import top.mylady.auth.utils.JwtUtils;
 import top.mylady.user.pojos.User;

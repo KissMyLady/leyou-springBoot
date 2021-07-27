@@ -1,9 +1,8 @@
-package top.mylady.auth.utils;
+package top.mylady.utils.auth;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.apache.catalina.User;
 import org.joda.time.DateTime;
 import top.mylady.utils.pojos.auth.UserInfo;
 

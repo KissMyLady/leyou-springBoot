@@ -4,9 +4,8 @@ import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
-//import top.mylady.auth.utils.RsaUtils;
-
-import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
+import top.mylady.utils.auth.RsaUtils;
 import java.io.File;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -16,7 +15,7 @@ import java.security.PublicKey;
  * 加载密钥
  */
 @Data
-//@Configuration
+@Configuration
 public class JwtProperties {
 
     /**
@@ -83,8 +82,8 @@ public class JwtProperties {
             }
 
             //获取
-            //this.publicKey = RsaUtils.getPublicKey(pubKeyPath);
-            //this.privateKey = RsaUtils.getPrivateKey(priKeyPath);
+            this.publicKey = RsaUtils.getPublicKey(pubKeyPath);
+            this.privateKey = RsaUtils.getPrivateKey(priKeyPath);
         }
         catch (Exception e){
             System.out.println("初始化公钥失败, 抛出异常, 原因e: "+ e);

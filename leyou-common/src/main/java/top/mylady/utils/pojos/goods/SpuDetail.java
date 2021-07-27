@@ -1,4 +1,4 @@
-package top.mylady.service.pojo;
+package top.mylady.utils.pojos.goods;
 import lombok.Data;
 
 

@@ -9,11 +9,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import top.mylady.user.mappers.user.IUser;
 import top.mylady.user.pojos.User;
-import top.mylady.utils.dtos.AppHttpCodeEnum;
-import top.mylady.utils.dtos.ResponseResult;
+import top.mylady.user.utils.AppHttpCodeEnum;
+import top.mylady.user.utils.ResponseResult;
 import java.util.Date;
 import static org.apache.hadoop.hbase.trace.HBaseHTraceConfiguration.KEY_PREFIX;
-import top.mylady.utils.CodecUtils;
+import top.mylady.user.utils.CodecUtils;
 import org.springframework.http.ResponseEntity;
 
 

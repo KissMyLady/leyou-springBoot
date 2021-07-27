@@ -1,7 +1,7 @@
 package top.mylady.cart.ctrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import top.mylady.cart.pojo.Cart;
+import top.mylady.utils.pojos.cart.Cart;
 import top.mylady.cart.service.CartService;
 import top.mylady.utils.dtos.ResponseResult;
 
@@ -12,7 +12,6 @@ import top.mylady.utils.dtos.ResponseResult;
 @RestController
 @RequestMapping("/cart")
 public class CartController {
-
 
     @Autowired
     private CartService cartService;
