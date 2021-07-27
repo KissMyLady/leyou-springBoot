@@ -18,6 +18,7 @@
         <module>leyou-upload</module>
         <module>leyou-user</module>
         <module>leyou-auth</module>
+        <module>leyou-cart</module>
     </modules>
     
     <!-- 继承Spring boot工程 -->

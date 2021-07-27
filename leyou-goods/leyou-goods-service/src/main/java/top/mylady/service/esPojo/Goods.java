@@ -2,10 +2,10 @@ package top.mylady.service.esPojo;
 
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
+//import org.springframework.data.annotation.Id;
+//import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Field;
+//import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.Date;
 import java.util.List;
@@ -16,16 +16,16 @@ import java.util.Map;
  * 商品搜索映射封装
  */
 @Data
-@Document(indexName="goods", shards = 1, replicas = 0)
+//@Document(indexName="goods", shards = 1, replicas = 0)
 public class Goods {
 
-    @Id
+    //@Id
     private Long id; // spuId
 
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    //@Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String all; // 所有需要被搜索的信息，包含标题，分类，甚至品牌
 
-    @Field(type = FieldType.Keyword, index = false)
+    //@Field(type = FieldType.Keyword, index = false)
     private String subTitle;  // 卖点
 
     private Long brandId;     // 品牌id
@@ -35,7 +35,7 @@ public class Goods {
     private Date createTime;  // 创建时间
     private List<Long> price; // 价格
 
-    @Field(type = FieldType.Keyword, index = false)
+    //@Field(type = FieldType.Keyword, index = false)
     private String skus;  // List<sku>信息的json结构
 
     private Map<String, Object> specs;  // 可搜索的规格参数，key是参数名，值是参数值

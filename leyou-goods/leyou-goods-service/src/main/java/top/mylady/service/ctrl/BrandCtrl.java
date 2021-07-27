@@ -14,7 +14,7 @@ import java.util.List;
 
 //品牌
 @RestController
-@RequestMapping("/goods/brand")
+@RequestMapping("/brand")
 public class BrandCtrl {
 
     private static final Logger logger = LoggerFactory.getLogger(BrandCtrl.class);

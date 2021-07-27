@@ -18,11 +18,17 @@
             <artifactId>leyou-goods-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-    
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+    
+        <!-- @Transient 表示该属性并非一个到数据库表的字段的映射, ORM框架将忽略该属性.-->
+<!--        <dependency>-->
+<!--            <groupId>javax.persistence</groupId>-->
+<!--            <artifactId>persistence-api</artifactId>-->
+<!--        </dependency>-->
     
         <!-- 引入依赖模块 -->
         <!--common-->
@@ -53,6 +59,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
         
         <!--参考: https://blog.csdn.net/u013600314/article/details/80583745-->
         <!-- jaxb模块引用 - start -->
