@@ -14,6 +14,7 @@ import top.mylady.utils.dtos.ResponseResult;
 import java.util.Date;
 import static org.apache.hadoop.hbase.trace.HBaseHTraceConfiguration.KEY_PREFIX;
 import top.mylady.utils.CodecUtils;
+import org.springframework.http.ResponseEntity;
 
 
 @Service
@@ -126,7 +127,9 @@ public class UserService {
     /**
      * 用户登录
      */
-    public ResponseResult userLogin(String username, String pwd){
+    public User userLogin(String username, String pwd){
+        logger.info("user-service: 进入到user模块, 用户登录模块");
+
         //查询用户是否存在
         User findUser = null;
         try {
@@ -138,7 +141,7 @@ public class UserService {
         }
 
         if (findUser == null){
-            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+            return null;
         }
 
         //校验, 数据的密码和传入的密码是否一致
@@ -146,10 +149,11 @@ public class UserService {
 
         if ( isUser == false ){
             logger.warn("警告, 密码核对失败, 返回错误信息");
-            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+            return null;
         }
 
-        logger.info("密码校验成功了");
-        return ResponseResult.okResult("用户登录成功");
+        logger.info("密码校验成功了, 这里存在风险, 因为直接返回了用户的敏感信息");
+        return findUser;
+
     }
 }

@@ -19,6 +19,12 @@
             <artifactId>leyou-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+    
+        <dependency>
+            <groupId>top.mylady</groupId>
+            <artifactId>leyou-user</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,8 +76,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
+    
+        <!-- jaxb模块引用 - start -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+        </dependency>
+        <!-- jaxb模块引用 - end -->
+    
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+    
+        <dependency>
+            <groupId>com.netflix.archaius</groupId>
+            <artifactId>archaius-core</artifactId>
+<!--            <version>0.7.6</version>-->
+        </dependency>
         
-        <!--Actuator 为Eureka提供测试接口, 在Eureka控制面板上直接点击-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -97,6 +121,13 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
-
+        
+        <!--CookieUtils servlet相关依赖-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+        </dependency>
+        
+        
     </dependencies>
 </project>

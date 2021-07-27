@@ -1,16 +1,20 @@
 package top.mylady.user.ctrl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.mylady.user.pojos.User;
 import top.mylady.user.service.UserService;
 import top.mylady.utils.dtos.ResponseResult;
-
+import org.springframework.http.ResponseEntity;
 import javax.validation.Valid;
 
 
 @RestController
 @RequestMapping("/user")
 public class UserCtrl {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserCtrl.class);
 
     @Autowired
     private UserService userService;
@@ -36,9 +40,11 @@ public class UserCtrl {
      * 用户登录
      */
     @PostMapping("/login")
-    public ResponseResult login(@RequestParam("username") String username,
+    public ResponseEntity login(@RequestParam("username") String username,
                                 @RequestParam("pwd") String pwd ){
-        return userService.userLogin(username, pwd);
+        User user = userService.userLogin(username, pwd);
+        logger.info("user模块, ctrl: 使用spring自带的ResponseEntity返回user对象, 打印查询到的user: "+ user);
+        return ResponseEntity.ok(user);
     }
 
 }

@@ -29,8 +29,8 @@ public class JwtUtils {
         System.out.println("私钥加密token, 打印传递过来的userInfo: "+ userInfo);
 
         return Jwts.builder()
-                .claim(JwtConstans.JWT_KEY_ID, userInfo.getId())
-                .claim(JwtConstans.JWT_KEY_USER_NAME, userInfo.getUsername())
+                .claim("id", userInfo.getId())
+                .claim("username", userInfo.getUsername())
                 .setExpiration(DateTime.now().plusDays(expireMinutes).toDate())
                 .signWith(SignatureAlgorithm.RS256, privateKey)
                 .compact();
@@ -93,8 +93,7 @@ public class JwtUtils {
 
         Long id = ObjectUtils.toLong(body.get(JwtConstans.JWT_KEY_ID));
         String username = ObjectUtils.toString(body.get(JwtConstans.JWT_KEY_USER_NAME));
-        System.out.println("打印获取token中的信息id值: "+ id);
-        System.out.println("打印获取token中的信息username值: "+ username);
+
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setUsername(username);

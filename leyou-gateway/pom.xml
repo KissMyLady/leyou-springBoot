@@ -13,9 +13,22 @@
     <name>leyou-springCloud-zuul</name>
     <description>网关</description>
     
+    
     <dependencies>
-    
-    
+        
+        <!--common-->
+        <dependency>
+            <groupId>top.mylady</groupId>
+            <artifactId>leyou-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>top.mylady</groupId>
+            <artifactId>leyou-auth</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>

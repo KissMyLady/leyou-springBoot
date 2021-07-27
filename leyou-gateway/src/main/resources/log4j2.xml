@@ -90,15 +90,7 @@
     <!--Logger节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等。-->
     <!--然后定义loggers，只有定义了logger并引入的appender，appender才会生效-->
     <loggers>
-        
-        <logger name="org.mybatis" level="warn" additivity="false">
-            <AppenderRef ref="RollingFileWarn"/>
-        </logger>
-        
-        <logger name="com.zaxxer.hikari.pool.HikariPool" level="WARN" additivity="false">
-            <AppenderRef ref="RollingFileWarn"/>
-        </logger>
-        
+
         <logger name="com.zaxxer" level="WARN" additivity="false">
             <AppenderRef ref="RollingFileWarn"/>
         </logger>
@@ -115,17 +107,16 @@
             <AppenderRef ref="RollingFileWarn"/>
         </Logger>
         
-        <Logger name="com.netflix.eureka" level="off" additivity="false">
+        <Logger name="io.lettuce" level="off" additivity="false">
             <AppenderRef ref="RollingFileWarn"/>
         </Logger>
         
-        
         <root level="info">
             <appender-ref ref="Console"/>
-            <appender-ref ref="Filelog"/>
-            <appender-ref ref="RollingFileInfo"/>
-            <appender-ref ref="RollingFileWarn"/>
-            <appender-ref ref="RollingFileError"/>
+<!--            <appender-ref ref="Filelog"/>-->
+<!--            <appender-ref ref="RollingFileInfo"/>-->
+<!--            <appender-ref ref="RollingFileWarn"/>-->
+<!--            <appender-ref ref="RollingFileError"/>-->
         </root>
     
     </loggers>

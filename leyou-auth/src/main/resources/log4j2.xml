@@ -74,7 +74,10 @@
     
         <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
         <!--监控系统信息-->
-        <logger name="org.apache" level="warn" />
+        
+        <logger name="org.apache" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
         
         <logger name="com.sun.jersey" level="off" additivity="false">
             <AppenderRef ref="Console"/>
@@ -91,6 +94,14 @@
         <logger name="com.zaxxer" level="off" additivity="false">
             <AppenderRef ref="Console"/>
         </logger>
+        
+        <Logger name="io.netty" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <Logger name="com.netty" level="off" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
         
         <Logger name="com.netflix" level="off" additivity="false">
             <AppenderRef ref="Console"/>

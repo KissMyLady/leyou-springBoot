@@ -9,9 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import top.mylady.auth.entity.UserInfo;
 import top.mylady.auth.utils.JwtUtils;
 import top.mylady.auth.utils.RsaUtils;
-
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import org.joda.time.DateTime;
 
 
 @SpringBootTest(classes = AuthApp.class)
@@ -66,6 +66,12 @@ public class testConn {
         String token = "token";
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
         System.out.println("打印通过token解析到的user: "+ user);
+    }
+
+    @Test
+    public void testData(){
+        System.out.println(DateTime.now());
+        // 2021-07-27T09:37:12.263+08:00
     }
 
 

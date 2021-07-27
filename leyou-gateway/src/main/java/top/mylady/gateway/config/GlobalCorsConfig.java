@@ -24,6 +24,7 @@ public class GlobalCorsConfig {
         config.addAllowedOrigin("http://www.leyou.com");
         config.addAllowedOrigin("https://www.leyou.com");
         config.addAllowedOrigin("https://blog.mylady.top");
+        config.addAllowedOrigin("127.0.0.1");
 
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);

@@ -57,6 +57,17 @@ public class ResponseResult<T> implements Serializable {
         return result;
     }
 
+    public static ResponseResult okResult(Object data, String msg) {
+        ResponseResult result = setAppHttpCodeEnum(
+                AppHttpCodeEnum.SUCCESS
+        );
+        if(data!=null) {
+            result.setData(data);
+        }
+        result.setErrorMessage(msg);
+        return result;
+    }
+
     /*
      * 返回一个Http的枚举类型
      * */
