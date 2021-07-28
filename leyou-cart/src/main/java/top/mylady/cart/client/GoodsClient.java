@@ -1,10 +1,7 @@
 package top.mylady.cart.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 //import top.mylady.service.pojo.Sku;
 //import top.mylady.user.pojos.User;
 import top.mylady.utils.dtos.ResponseResult;
@@ -25,8 +22,8 @@ public interface GoodsClient {
     //@PostMapping("/user/login")
     //User findUserByName(@RequestParam("username")String username, @RequestParam("pwd")String pwd);
 
-    @PostMapping("/goods/sku/{id}")
-    public abstract Sku queryBySkuId(@PathVariable long id);
+    @RequestMapping("/goods/sku/{id}")
+    public abstract Sku queryBySkuId(@PathVariable Long id);
 
 
 

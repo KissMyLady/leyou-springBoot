@@ -8,6 +8,15 @@ import lombok.Data;
 @Data
 public class Cart {
 
+    public Cart(){ }
+
+    public Cart(Long userId, Long skuId, String title, Integer num){
+        this.userId = userId;
+        this.skuId = skuId;
+        this.title = title;
+        this.num = num;
+    }
+
     //用户Id
     private Long userId;
 
